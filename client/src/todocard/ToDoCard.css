@@ -1,0 +1,104 @@
+.todocard {
+  background-color: #fff;
+  width: 180px;
+  height: 200px;
+  text-align: center;
+  color: #000;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 2%;
+  border-radius: 5px;
+}
+
+.todo-title {
+  font-weight: 700;
+}
+
+.checkboxes {
+  float: left;
+  text-align: start;
+}
+
+.todocard-add {
+  background-color: #fff;
+  width: 180px;
+  height: 200px;
+  text-align: center;
+  color: #000;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 2%;
+  border-radius: 5px;
+}
+
+.todoadd-span {
+  position: relative;
+  float: left;
+  font-size: 9vh;
+  top: 45%;
+  font-weight: 100;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.todo-title-input {
+  border: none;
+  background: transparent;
+  font-size: 3vh;
+}
+
+.todo-title-input:focus {
+  outline-width: 0;
+}
+
+.todo-entry-input:focus {
+  outline-width: 0;
+}
+
+.todo-entry-input {
+  border: none;
+  background: transparent;
+}
+
+.todo-entry-close {
+  font-size: 20px;
+  margin-left: 2%;
+  color: #e01b1b;
+  cursor: pointer;
+  transform: rotateY(0deg) rotate(45deg);
+}
+
+.todo-submit-div {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5%;
+}
+
+.todo-submit-div-button-add {
+  margin: 2px;
+  color: #fff;
+  border: 1px solid #29a2ff;
+  background: #29a2ff;
+  border-radius: 3px;
+  padding: 6px;
+  height: 30px;
+}
+
+.todo-submit-div-button-save {
+  margin: 2px;
+  color: #fff;
+  border: 1px solid #098c00;
+  background: #098c00;
+  border-radius: 3px;
+  padding: 6px;
+  height: 30px;
+}
+
+.editCheckBox {
+  margin-top: 2px;
+}
+
+.todo-submit-message-box {
+  text-align: center;
+}
