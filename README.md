@@ -23,12 +23,15 @@ npm start
 ```
 
 Things Yet TODO
+```
 **Add Login page
 **Add Registration Page
 **Authkey JWT Token
 **Dockerization
-\*\*Update and publish code in heroku
 
+```
+\*\*Update and publish code in heroku
+```
 Dependencies used this proect are
 "cookie-parser": "~1.4.4",
 "cors": "^2.8.5",
@@ -40,3 +43,4 @@ Dependencies used this proect are
 "react": "^16.10.2",
 "react-dom": "^16.10.2",
 "react-scripts": "3.2.0"
+```
