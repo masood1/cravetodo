@@ -1,10 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import ToDoCard from './todocard/ToDoCard'
-import AddToDo from './todocard/AddToDo'
-import * as Constants from './common/Constants'
-import {ToDoContext} from './common/Context'
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import ToDoCard from "./todocard/ToDoCard";
+import AddToDo from "./todocard/AddToDo";
+import * as Constants from "./common/Constants";
+import { ToDoContext } from "./common/Context";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,19 +14,18 @@ class App extends React.Component {
       isLoaded: false,
       todos: []
     };
-    this.fetchToDO = this.fetchToDO.bind(this)
+    this.fetchToDO = this.fetchToDO.bind(this);
   }
 
-  componentDidMount(){
-    this.fetchToDO()
+  componentDidMount() {
+    this.fetchToDO();
   }
 
   fetchToDO() {
-    
     fetch(Constants.TODOS)
-      .then(res => res.json())
+      .then(res => json())
       .then(
-        (result) => {
+        result => {
           this.setState({
             todos: result.todos
           });
@@ -35,14 +34,13 @@ class App extends React.Component {
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        error => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
-      
+      );
   }
 
   render() {
@@ -52,13 +50,21 @@ class App extends React.Component {
           <p>To-Do</p>
         </header>
         <body className="App-body">
-          <ToDoContext.Provider value={
-            {
+          <ToDoContext.Provider
+            value={{
               state: this.state,
-              fetchToDO: ()=> {this.fetchToDO()},
-            }}>
+              fetchToDO: () => {
+                this.fetchToDO();
+              }
+            }}
+          >
             {this.state.todos.map(todo => (
-              <ToDoCard name={todo.name} entries={todo.entries} todoid={todo._id} key={todo._id}/>
+              <ToDoCard
+                name={todo.name}
+                entries={todo.entries}
+                todoid={todo._id}
+                key={todo._id}
+              />
             ))}
             <AddToDo />
           </ToDoContext.Provider>
@@ -67,6 +73,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;
