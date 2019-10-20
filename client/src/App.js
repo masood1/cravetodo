@@ -23,7 +23,7 @@ class App extends React.Component {
 
   fetchToDO() {
     fetch(Constants.TODOS)
-      .then(res => json())
+      .then(res => res.json())
       .then(
         result => {
           this.setState({
