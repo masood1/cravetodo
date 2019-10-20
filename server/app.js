@@ -25,9 +25,9 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Cors settings
 var allowedOrigins = [
+  "https://cravetodo.herokuapp.com/",
   "http://localhost:3000",
-  "http://localhost:9000",
-  "https://cravetodo.herokuapp.com/"
+  "http://localhost:9000"
 ];
 app.use(
   cors({
