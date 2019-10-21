@@ -7,6 +7,7 @@ var mongoose = require("mongoose");
 var cors = require("cors");
 
 var todoApiRouter = require("./routes/todoapi");
+var authApiRouter = require("./routes/auth");
 
 var ToDo = require("./models/todo");
 
@@ -26,24 +27,27 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 //Cors settings
 var allowedOrigins = [
   "https://cravetodo.herokuapp.com/",
+  "http://cravetodo.herokuapp.com/",
   "http://localhost:3000",
-  "http://localhost:9000"
+  "http://localhost:9000",
+  "https://localhost:9000"
 ];
 app.use(
-  cors({
-    origin: function(origin, callback) {
-      // allow requests with no origin
-      // (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        var msg =
-          "The CORS policy for this site does not " +
-          "allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    }
-  })
+  cors()
+  // cors({
+  //   origin: function(origin, callback) {
+  //     // allow requests with no origin
+  //     // (like mobile apps or curl requests)
+  //     if (!origin) return callback(null, true);
+  //     if (allowedOrigins.indexOf(origin) === -1) {
+  //       var msg =
+  //         "The CORS policy for this site does not " +
+  //         "allow access from the specified Origin.";
+  //       return callback(new Error(msg), false);
+  //     }
+  //     return callback(null, true);
+  //   }
+  // })
 );
 
 // view engine setup
@@ -56,6 +60,7 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.use("/api/v1/todo", todoApiRouter);
 
+app.use("/api/v1/auth", authApiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

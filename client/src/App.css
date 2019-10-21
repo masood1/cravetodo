@@ -4,8 +4,6 @@
   background-color: #282c34;
 }
 
-
-
 .App-header {
   background-color: #282c34;
   min-height: 2vh;
@@ -21,7 +19,6 @@
   color: white;
   padding: 5%;
   flex-wrap: wrap;
-
 }
 
 .App-link {

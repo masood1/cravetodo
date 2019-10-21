@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import axios from "axios";
 import ToDoCard from "./todocard/ToDoCard";
 import AddToDo from "./todocard/AddToDo";
 import * as Constants from "./common/Constants";
@@ -22,33 +23,52 @@ class App extends React.Component {
   }
 
   fetchToDO() {
-    fetch(Constants.TODOS)
-      .then(res => res.json())
-      .then(
-        result => {
+    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+      "jwtToken"
+    );
+    axios
+      .get(Constants.TODOS)
+      .then(res => {
+        console.log("Response : ", res);
+        if (res.status == 403) {
+          this.props.history.push("/login");
+        } else {
           this.setState({
-            todos: result.todos
+            todos: res.data.todos
           });
           console.log(this.state.todos);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
         }
-      );
+      })
+      .catch(error => {
+        console.log("Error from backend : ", error);
+        // if (error.response.status === 403) {
+        this.props.history.push("/login");
+        // }
+      });
   }
+  logout = () => {
+    localStorage.removeItem("jwtToken");
+    window.location.reload();
+  };
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>To-Do</p>
-        </header>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <header className="App-header">
+                <p> Crave Team To-Do List</p>
+              </header>
+            </h3>
+            {localStorage.getItem("jwtToken") && (
+              <button class="btn btn-primary" onClick={this.logout}>
+                Logout
+              </button>
+            )}
+          </div>
+        </div>
+
         <body className="App-body">
           <ToDoContext.Provider
             value={{
