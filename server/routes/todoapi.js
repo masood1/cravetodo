@@ -28,6 +28,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), function(
   req,
   res
 ) {
+  console.log("Post call check ", req);
   var token = getToken(req.headers);
   if (token) {
     if (!req.body.name || !req.body.todos) {
