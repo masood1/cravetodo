@@ -22,22 +22,30 @@ npm install
 npm start
 ```
 
-Things Yet TODO
-```
-**Add Login page
-**Add Registration Page
-**Authkey JWT Token
-**Dockerization
+Things TODO
 
 ```
+** Forgot password
+** Login from facebook or google
+** Email verification
+** UI of Dashboard
+
+```
+
 \*\*Update and publish code in heroku
+
 ```
 Dependencies used this proect are
+"passport": "0.4.0",
+"passport-jwt": "4.0.0",
+"serve-favicon": "2.5.0"
 "cookie-parser": "~1.4.4",
 "cors": "^2.8.5",
 "debug": "~2.6.9",
 "express": "~4.16.1",
 "http-errors": "~1.6.3",
+"react-router-dom": "5.1.2",
+"axios": "0.19.0",
 "mongoose": "^5.7.4",
 "morgan": "~1.9.1"
 "react": "^16.10.2",
